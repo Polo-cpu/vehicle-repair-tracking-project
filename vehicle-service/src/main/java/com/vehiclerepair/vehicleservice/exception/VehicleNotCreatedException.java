@@ -1,7 +1,6 @@
 package com.vehiclerepair.vehicleservice.exception;
 
 import com.vehiclerepair.vehicleservice.model.enums.Language;
-import com.vehiclerepair.vehicleservice.response.MessageResponse;
 import com.vehiclerepair.vehicleservice.utils.IMessageCodes;
 import com.vehiclerepair.vehicleservice.utils.MessageUtils;
 import lombok.Getter;
