@@ -8,6 +8,7 @@ import java.util.List;
 @Data
 @Builder
 public class InternalServiceResponse<T> {
+    private MessageResponse messageResponse;
     private T payload;
     private List<T> payloadList;
     private boolean hasError;
