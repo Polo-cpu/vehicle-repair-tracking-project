@@ -5,7 +5,6 @@ import com.vehiclerepair.vehicleservice.model.entity.VehicleEntity;
 import com.vehiclerepair.vehicleservice.model.entity.VehicleRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
