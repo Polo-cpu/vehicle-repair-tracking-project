@@ -1,16 +1,25 @@
 package com.vehiclerepair.vehicleservice.repository;
 
-import com.vehiclerepair.vehicleservice.interfaces.vehicle.model.CreateVehicleCommand;
+
 import com.vehiclerepair.vehicleservice.model.entity.VehicleEntity;
 import com.vehiclerepair.vehicleservice.model.entity.VehicleRepository;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
+
+@Getter
+@Setter
 @AllArgsConstructor
-public class VehicleJPARepositoryAdapter implements VehicleRepository{
+public class VehicleJPARepositoryAdapter implements VehicleRepository {
+    @Autowired
     private VehicleJPARepository vehicleJPARepository;
     @Override
     public List<VehicleEntity> findAll() {

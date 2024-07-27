@@ -1,11 +1,7 @@
 package com.vehiclerepair.vehicleservice.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.*;
 
 
 import java.util.List;
@@ -14,12 +10,14 @@ import java.util.List;
 @Data
 @Getter
 @Setter
-@RequiredArgsConstructor
-@Document(collection = "vehicle")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "vehicle")
 public class VehicleEntity {
-    @Column(name= "id")
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name= "id")
     private Long id;
     @Column(name = "unique_vehicle_identity")
     private String uuid;
@@ -37,4 +35,6 @@ public class VehicleEntity {
     private String licencePlate;
     @Column(name ="vehicle_photos")
     private List<String> vehiclePhotos;
+
+
 }

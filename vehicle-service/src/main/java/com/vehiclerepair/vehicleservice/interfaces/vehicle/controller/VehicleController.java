@@ -3,51 +3,55 @@ package com.vehiclerepair.vehicleservice.interfaces.vehicle.controller;
 import com.vehiclerepair.vehicleservice.interfaces.vehicle.model.CreateVehicleCommand;
 import com.vehiclerepair.vehicleservice.mapper.VehicleMapper;
 import com.vehiclerepair.vehicleservice.model.entity.VehicleEntity;
-import com.vehiclerepair.vehicleservice.model.entity.VehicleRepository;
+import com.vehiclerepair.vehicleservice.repository.VehicleJPARepositoryAdapter;
 import com.vehiclerepair.vehicleservice.response.InternalServiceResponse;
-import com.vehiclerepair.vehicleservice.service.VehicleService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("vehicle")
+@AllArgsConstructor
+@RequestMapping("/vehicle")
 public class VehicleController {
-    private VehicleRepository vehicleRepository;
+
+    @Autowired
+    private final VehicleJPARepositoryAdapter vehicleRepository;
+    @Autowired
     private VehicleMapper vehicleMapper;
 
-    public InternalServiceResponse<List<VehicleEntity>> findAll(){
+
+
+    @GetMapping("/all")
+    public InternalServiceResponse<List<VehicleEntity>> findAllVehicles(){
         List<VehicleEntity> allVehicles = vehicleRepository.findAll();
         return InternalServiceResponse.<List<VehicleEntity>>builder()
                 .payloadList(Collections.singletonList(allVehicles))
                 .httpStatus(HttpStatus.OK)
                 .build();
     }
-
-    public InternalServiceResponse<VehicleEntity> findById(Long id){
-        VehicleEntity vehicleEntity = vehicleRepository.findById(id).orElseThrow(() -> new RuntimeException());
+    @GetMapping("/{id}")
+    public InternalServiceResponse<VehicleEntity> findVehicleById(@PathVariable("id") Long id){
+        VehicleEntity vehicleEntity = vehicleRepository.findById(id).orElseThrow(RuntimeException::new);
         return InternalServiceResponse.<VehicleEntity>builder()
                 .payload(vehicleEntity)
                 .httpStatus(HttpStatus.OK)
                 .build();
     }
-    public InternalServiceResponse<VehicleEntity> findByUuid(UUID uuid){
-        VehicleEntity vehicleEntity = vehicleRepository.findByUuid(uuid).orElseThrow(() -> new RuntimeException());
+    @GetMapping("/uri/{uuid}")
+    public InternalServiceResponse<VehicleEntity> findVehicleByUuid(@PathVariable("uuid") UUID uuid){
+        VehicleEntity vehicleEntity = vehicleRepository.findByUuid(uuid).orElseThrow(RuntimeException::new);
         return InternalServiceResponse.<VehicleEntity>builder()
                 .payload(vehicleEntity)
                 .httpStatus(HttpStatus.OK)
                 .build();
     }
-    public InternalServiceResponse<VehicleEntity> save(CreateVehicleCommand createVehicleCommand){
-        VehicleEntity savedVehicleEntity = vehicleRepository.save(vehicleMapper.toVehicleEntity(createVehicleCommand));
+    @PostMapping("/save")
+    public InternalServiceResponse<VehicleEntity> saveVehicle(@RequestBody CreateVehicleCommand createVehicleCommand){
+        VehicleEntity savedVehicleEntity = vehicleRepository.save(vehicleMapper.createVehicleCommandtoVehicleEntity(createVehicleCommand));
         return InternalServiceResponse.<VehicleEntity>builder()
                 .payload(savedVehicleEntity)
                 .httpStatus(HttpStatus.CREATED)
