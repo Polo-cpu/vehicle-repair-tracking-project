@@ -18,7 +18,7 @@ public class VehiclePartEntity {
     private Long id;
     @Column(name = "unique_vehicle_identity")
     private String uuid;
-    @Column(name ="brand")
+    @Column(name ="brands")
     private String brand;
     @Column(name ="model")
     private String model;
