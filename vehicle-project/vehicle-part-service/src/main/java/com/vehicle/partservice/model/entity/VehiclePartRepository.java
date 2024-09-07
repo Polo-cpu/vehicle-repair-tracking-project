@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface VehicleRepository {
+public interface VehiclePartRepository {
     List<VehiclePartEntity> findAll();
 
     Optional<VehiclePartEntity> findById(Long id);

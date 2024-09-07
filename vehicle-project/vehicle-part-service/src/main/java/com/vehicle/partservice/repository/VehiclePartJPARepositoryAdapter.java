@@ -1,14 +1,14 @@
 package com.vehicle.partservice.repository;
 
 import com.vehicle.partservice.model.entity.VehiclePartEntity;
-import com.vehicle.partservice.model.entity.VehicleRepository;
+import com.vehicle.partservice.model.entity.VehiclePartRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 @AllArgsConstructor
-public class VehiclePartJPARepositoryAdapter implements VehicleRepository {
+public class VehiclePartJPARepositoryAdapter implements VehiclePartRepository {
     private VehiclePartJPARepository vehiclePartJPARepository;
     @Override
     public List<VehiclePartEntity> findAll() {

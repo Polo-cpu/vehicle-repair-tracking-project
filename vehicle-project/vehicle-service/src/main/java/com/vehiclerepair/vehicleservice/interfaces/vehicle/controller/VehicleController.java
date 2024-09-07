@@ -3,6 +3,7 @@ package com.vehiclerepair.vehicleservice.interfaces.vehicle.controller;
 import com.vehiclerepair.vehicleservice.interfaces.vehicle.model.CreateVehicleCommand;
 import com.vehiclerepair.vehicleservice.mapper.VehicleMapper;
 import com.vehiclerepair.vehicleservice.model.entity.VehicleEntity;
+import com.vehiclerepair.vehicleservice.model.entity.VehicleRepository;
 import com.vehiclerepair.vehicleservice.repository.VehicleJPARepositoryAdapter;
 import com.vehiclerepair.vehicleservice.response.InternalServiceResponse;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.UUID;
 public class VehicleController {
 
     @Autowired
-    private final VehicleJPARepositoryAdapter vehicleRepository;
+    private final VehicleRepository vehicleRepository;
     @Autowired
     private VehicleMapper vehicleMapper;
 
