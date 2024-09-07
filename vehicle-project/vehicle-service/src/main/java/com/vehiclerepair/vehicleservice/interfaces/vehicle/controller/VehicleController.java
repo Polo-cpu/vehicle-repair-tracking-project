@@ -4,7 +4,6 @@ import com.vehiclerepair.vehicleservice.interfaces.vehicle.model.CreateVehicleCo
 import com.vehiclerepair.vehicleservice.mapper.VehicleMapper;
 import com.vehiclerepair.vehicleservice.model.entity.VehicleEntity;
 import com.vehiclerepair.vehicleservice.model.entity.VehicleRepository;
-import com.vehiclerepair.vehicleservice.repository.VehicleJPARepositoryAdapter;
 import com.vehiclerepair.vehicleservice.response.InternalServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
